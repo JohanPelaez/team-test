@@ -1,0 +1,66 @@
+<form class="form" [formGroup]="userForm">
+    <mat-grid-list cols="2" rowHeight="70px">
+        <mat-grid-tile [colspan]="1">
+            <mat-form-field class="full-width">
+                <input matInput placeholder="Name" class="form-control" formControlName="name">
+            </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="1">
+            <span>Area:&nbsp;&nbsp;&nbsp;</span>
+            <mat-button-toggle-group name="fontStyle" aria-label="Font Style" formControlName="area">
+                <mat-button-toggle value="Services" selected>Services</mat-button-toggle>
+                <mat-button-toggle value="Kitchen">Kitchen</mat-button-toggle>
+            </mat-button-toggle-group>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1">
+            <mat-form-field class="full-width">
+                <input matInput placeholder="Date of birth" formControlName="dob">
+            </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="1">
+            <mat-form-field class="full-width">
+                <mat-select placeholder="Job title" formControlName="jobTitle">
+                    <mat-option *ngFor="let job of jobTitles" [value]="job">
+                    {{job}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1">
+            <mat-form-field class="full-width">
+                <mat-select placeholder="Country" formControlName="country">
+                    <mat-option *ngFor="let country of countries" [value]="country.name">
+                    {{country.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="1">
+            <mat-form-field class="full-width">
+                <input matInput placeholder="Username" formControlName="username">
+            </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1">
+            <mat-form-field class="full-width">
+                <input matInput placeholder="Hire date" formControlName="hireDate">
+            </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="1">
+            <mat-form-field class="full-width">
+                <input matInput placeholder="Tip Rate">
+            </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="1">
+            <span>Status:&nbsp;&nbsp;&nbsp;</span>
+            <mat-slide-toggle color="primary" formControlName="status"></mat-slide-toggle>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="2">
+            <button mat-raised-button>Cancel</button>
+            <button mat-raised-button color="primary" [disabled]="userForm.status !== 'VALID'">Save</button>
+        </mat-grid-tile>
+    </mat-grid-list>
+</form>
